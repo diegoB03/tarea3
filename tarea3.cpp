@@ -128,11 +128,3 @@ if ( ar.is_open() ){
 //	cout << "\nHasta luego ..." << "\n";
 //}
 
-int main(){
-    
-    string wea ="helo pesbex";
-    cout << wea[;4] << "\n"
-    
-    return 0;
-
-}
