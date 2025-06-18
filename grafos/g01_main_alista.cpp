@@ -1,4 +1,4 @@
-#include "../implementacion/Graphl_1.cpp"
+#include "implementacion/Graphl_1.cpp"
 #include <iostream>
 
 #define peso 999
