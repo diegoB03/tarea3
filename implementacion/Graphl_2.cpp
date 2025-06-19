@@ -58,25 +58,45 @@ class Graphl : public Graph {
 			}
 			return n(); // No neighbor
 		}
-		// Delete edge (i, j)
-		void delEdge(int i, int j) { 
-			if (isEdge(i,j)) {
-				vertex[i]->remove();
-				numEdge--;
+		
+		// Return weight of (i, j)
+		// Agrega una arista desde v1 hasta v2 (sin peso)
+		void setEdge(int v1, int v2) override {
+			if (isEdge(v1, v2)) return;         // ya existe el arco
+			Edge e(v2);                         // constructor sin peso
+			vertex[v1]->append(e);
+			numEdge++;
+		}
+
+		// Elimina la arista de v1 a v2
+		void delEdge(int v1, int v2) override {
+			vertex[v1]->moveToStart();
+			for (int i = 0; i < vertex[v1]->length(); i++) {
+				Edge e = vertex[v1]->getValue();
+				if (e.vertex() == v2) {
+					vertex[v1]->remove();
+					numEdge--;
+					return;
+				}
+				vertex[v1]->next();
 			}
 		}
-		// Is (i,j) an edge?
-		bool isEdge(int i, int j) { 
-			Edge it;
-			for (vertex[i]->moveToStart(); vertex[i]->currPos() < vertex[i]->length(); vertex[i]->next()) { // Check whole list
-				Edge temp = vertex[i]->getValue();
-				if (temp.vertex() == j) 
-					return true;
+
+		// Retorna true si existe un arco entre v1 y v2
+		bool isEdge(int v1, int v2) override {
+			vertex[v1]->moveToStart();
+			for (int i = 0; i < vertex[v1]->length(); i++) {
+				Edge e = vertex[v1]->getValue();
+				if (e.vertex() == v2) return true;
+				vertex[v1]->next();
 			}
 			return false;
 		}
-		
-		// Return weight of (i, j)
+
+		// Retorna un peso fijo si el arco existe, INFINITY si no
+		int weight(int v1, int v2) {
+			return isEdge(v1, v2) ? 1 : INFINITY;
+		}
 
 		
 		int getMark(int v) { return mark[v]; }

@@ -1,4 +1,5 @@
 #include<iostream>
+#include "implementacion/Graphl_2.cpp"
 #include<fstream>
 
 using namespace std;
@@ -6,11 +7,35 @@ using namespace std;
 struct infografo{ 
     string cantArcos, cantNodos, cantConduc;
     string linea;
+    int arcosNum, nodosNum, conducNum;
     int arcos[90];
     int nodos[90];
     
 
 };
+
+//convertir string a int
+int convertirStringAInt(const string& s) {
+    int resultado = 0;
+
+    int i = 0;
+
+
+    for (; i < s.length(); ++i) {
+        char c = s[i];
+        if (s[i] == ' ') i++;
+        
+        if (c < '0' || c > '9') {
+            std::cerr << "Error: carácter no numérico '" << c << "'\n";
+            return 0;
+        }
+        resultado = resultado * 10 + (c - '0');
+    }
+
+    return resultado;
+}
+
+
 
 void datosGrafo(){
     fstream ar;
@@ -47,16 +72,23 @@ void datosGrafo(){
                 v= info.linea[i];
                 if (v != ' '){
                     info.cantConduc= info.cantConduc + v; 
-//                       cout << arco << '\n';   
+                    cout << info.cantConduc << '\n';   
                 }
             
             
             }
+            
+            info.cantConduc += ' ';
         
-                //std::cout << info.linea[i] << "\n";
-        cout << info.cantNodos << "\n";
-        cout << info.cantArcos << "\n";
-        cout << info.cantConduc << "\n";
+            //std::cout << info.linea[i] << "\n";
+        
+        info.nodosNum = convertirStringAInt(info.cantNodos);
+        info.arcosNum = convertirStringAInt(info.cantArcos);
+        info.conducNum = convertirStringAInt(info.cantConduc);
+
+        cout << info.arcosNum <<  "prueba carajo" << "\n";
+        cout << info.nodosNum << "prueba carajo" << "\n";
+        cout << info.conducNum <<  "prueba carajo" << "\n";
 
         } else {
             cout << "Error al abrir el archivo\n";
@@ -69,6 +101,24 @@ void datosGrafo(){
 
 }
 
+void crearArcos(){
+    infografo info;
+    fstream ar;
+    int i;
+
+    Graphl *grf = new Graphl(info.nodosNum);
+
+//    cout << info.arcosNum  << "\n"; 
+//    cout << info.nodosNum  << "\n";
+//    cout << info.conducNum << "\n";    
+
+//    while(i < info.arcosNum and getline(ar, info.linea)){
+//
+//        
+//    }
+
+    
+}
 
 
 int main(){
