@@ -58,23 +58,8 @@ class Graphl : public Graph {
 			}
 			return n(); // No neighbor
 		}
-		// Set edge (i, j) to "weight"
-		void setEdge(int i, int j, int weight) {
-			Assert(weight>0, "May not set weight to 0");
-			Edge currEdge(j, weight);
-			if (isEdge(i, j)) { // Edge already exists in graph
-				vertex[i]->remove();
-				vertex[i]->insert(currEdge);
-			}
-			else { // Keep neighbors sorted by vertex index
-				numEdge++;
-				for (vertex[i]->moveToStart(); vertex[i]->currPos() < vertex[i]->length(); vertex[i]->next()) {
-					Edge temp = vertex[i]->getValue();
-					if (temp.vertex() > j) break;
-				}
-				vertex[i]->insert(currEdge);
-			}
-		}
+
+	
 		// Delete edge (i, j)
 		void delEdge(int i, int j) { 
 			if (isEdge(i,j)) {
@@ -93,15 +78,6 @@ class Graphl : public Graph {
 			return false;
 		}
 		
-		// Return weight of (i, j)
-		int weight(int i, int j) { 
-			Edge curr;
-			if (isEdge(i, j)) {
-				curr = vertex[i]->getValue();
-				return curr.weight();
-			}
-			else return 0;
-		}
 		
 		int getMark(int v) { return mark[v]; }
 		void setMark(int v, int val) { mark[v] = val; }
@@ -194,8 +170,5 @@ void Dijkstra(Graph* G, int* D, int s) {
 		if (D[v] == INFINITY) 
 			return; // Unreachable vertices
 		G->setMark(v, VISITED);
-		for (w=G->first(v); w<G->n(); w = G->next(v,w))
-			if (D[w] > (D[v] + G->weight(v, w)))
-				D[w] = D[v] + G->weight(v, w);
 	}
 }

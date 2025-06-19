@@ -18,10 +18,9 @@ class Graph {
 		virtual int first(int v) =0;
 		// Return v’s next neighbor
 		virtual int next(int v, int w) =0;
-		// Set the weight for an edge
-		// i, j: The vertices
-		// wgt: Edge weight
-		virtual void setEdge(int v1, int v2, int wght) =0;
+		// 
+		// i, j: The verticeswgt: Edge weight
+		virtual void setEdge(int v1, int v2) =0;
 		// Delete an edge
 		// i, j: The vertices
 		virtual void delEdge(int v1, int v2) =0;
@@ -29,10 +28,8 @@ class Graph {
 		// i, j: The vertices
 		// Return: true if edge i,j has non-zero weight
 		virtual bool isEdge(int i, int j) =0;
-		// Return an edge’s weight
-		// i, j: The vertices
-		// Return: The weight of edge i,j, or zero
-		virtual int weight(int v1, int v2) =0;
+		
+
 		// Get and Set the mark value for a vertex
 		// v: The vertex
 		// val: The value to set

@@ -11,10 +11,6 @@ void esArco(Graphl *g, int i, int j) {
 		cout << "NO es un arco(" << i << "," << j << ")" << "\n";
 }
 
-void pesoArco(Graphl *g, int i, int j) {
-		cout << "Peso del arco(" << i << "," << j << ") es: " << g->weight(i, j) << "\n";
-}
-
 void miVecino(Graphl *g, int i, int j) {
 		cout << "Vecino del arco(" << i << "," << j << ") es: " << g->next(i, j) << "\n";
 }
@@ -38,25 +34,25 @@ int main() {
 	Graphl *grf = new Graphl(vertices);
 	
 	/* Clase de hoy */
-	grf->setEdge(0, 2, 10);
-	grf->setEdge(2, 0, 10);
-	grf->setEdge(0, 4, 3);
-	grf->setEdge(4, 0, 3);
+	grf->setEdge(0, 2);
+	grf->setEdge(2, 0);
+	grf->setEdge(0, 4);
+	grf->setEdge(4, 0);
+
+	grf->setEdge(1, 2);
+	grf->setEdge(2, 1);
+	grf->setEdge(1, 5);	
+	grf->setEdge(5, 1);
+	grf->setEdge(5, 2);
+	grf->setEdge(5, 3);
+	grf->setEdge(5, 4);
 	
-	grf->setEdge(1, 2, 5);
-	grf->setEdge(2, 1, 5);
-	grf->setEdge(1, 5, 6);	
-	grf->setEdge(5, 1, 6);
-	grf->setEdge(5, 2, 6);
-	grf->setEdge(5, 3, 6);
-	grf->setEdge(5, 4, 6);
+	grf->setEdge(2, 3);
+	grf->setEdge(3, 2);
+	grf->setEdge(2, 5);
 	
-	grf->setEdge(2, 3, 15);
-	grf->setEdge(3, 2, 15);
-	grf->setEdge(2, 5, 11);
-	
-	grf->setEdge(3, 5, 15);
-	grf->setEdge(4, 5, 11);	
+	grf->setEdge(3, 5);
+	grf->setEdge(4, 5);	
 	
 	/* Consultas al grafo */
 	cout << "Numero de vertices: " << grf->n() << "\n";

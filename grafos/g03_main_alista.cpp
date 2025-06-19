@@ -11,10 +11,6 @@ void esArco(Graphl *g, int i, int j) {
 		cout << "NO es un arco(" << i << "," << j << ")" << "\n";
 }
 
-void pesoArco(Graphl *g, int i, int j) {
-		cout << "Peso del arco(" << i << "," << j << ") es: " << g->weight(i, j) << "\n";
-}
-
 void miVecino(Graphl *g, int i, int j) {
 		cout << "Vecino del arco(" << i << "," << j << ") es: " << g->next(i, j) << "\n";
 }
@@ -39,7 +35,7 @@ int main() {
 	Graphl *grf = new Graphl(vertices);
 	
 	/* Clase de hoy */
-	grf->setEdge(0, 1, 10);
+	grf->setEdge(0, 1);
 	grf->setEdge(0, 2, 3);
 	grf->setEdge(0, 3, 20);
 	
