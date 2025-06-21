@@ -1,4 +1,4 @@
-#include "../implementacion/Graphl_2.cpp"
+#include "implementacion/Graphl_2.cpp"
 #include <iostream>
 #include <fstream>
 

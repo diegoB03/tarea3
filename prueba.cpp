@@ -1,8 +1,13 @@
 #include<iostream>
 #include "implementacion/Graphl_2.cpp"
 #include<fstream>
+#include<sstream>
 
 using namespace std;
+using std::string;
+using std::stoi;
+
+
 
 struct infografo{ 
     string cantArcos, cantNodos, cantConduc;
@@ -13,29 +18,6 @@ struct infografo{
     
 
 };
-
-//convertir string a int
-int convertirStringAInt(const string& s) {
-    int resultado = 0;
-
-    int i = 0;
-
-
-    for (; i < s.length(); ++i) {
-        char c = s[i];
-        if (s[i] == ' ') i++;
-        
-        if (c < '0' || c > '9') {
-            std::cerr << "Error: carácter no numérico '" << c << "'\n";
-            return 0;
-        }
-        resultado = resultado * 10 + (c - '0');
-    }
-
-    return resultado;
-}
-
-
 
 void datosGrafo(){
     fstream ar;
@@ -82,13 +64,13 @@ void datosGrafo(){
         
             //std::cout << info.linea[i] << "\n";
         
-        info.nodosNum = convertirStringAInt(info.cantNodos);
-        info.arcosNum = convertirStringAInt(info.cantArcos);
-        info.conducNum = convertirStringAInt(info.cantConduc);
+        info.nodosNum  = stoi(info.cantNodos);
+        info.arcosNum  = stoi(info.cantArcos);
+        info.conducNum = stoi(info.cantConduc);
 
-        cout << info.arcosNum <<  "prueba carajo" << "\n";
-        cout << info.nodosNum << "prueba carajo" << "\n";
-        cout << info.conducNum <<  "prueba carajo" << "\n";
+        cout << info.arcosNum <<  " prueba carajo" << "\n";
+        cout << info.nodosNum << " prueba carajo" << "\n";
+        cout << info.conducNum <<  " prueba carajo" << "\n";
 
         } else {
             cout << "Error al abrir el archivo\n";
@@ -104,9 +86,22 @@ void datosGrafo(){
 void crearArcos(){
     infografo info;
     fstream ar;
-    int i;
+    int i = 0;
+
 
     Graphl *grf = new Graphl(info.nodosNum);
+
+    while (i < info.cantArcos and getline(r, info.linea)){
+        
+        for (x=0;i<info.linea.length() and c!=' ';i++){
+
+            c = info.linea[i];
+            if (c !=' '){
+                info.cantNodos = info.cantNodos + c;
+            }
+        }
+
+    }
 
 //    cout << info.arcosNum  << "\n"; 
 //    cout << info.nodosNum  << "\n";
