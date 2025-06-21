@@ -93,14 +93,6 @@ void crearArcos(){
 
     while (i < info.cantArcos and getline(r, info.linea)){
         
-        for (x=0;i<info.linea.length() and c!=' ';i++){
-
-            c = info.linea[i];
-            if (c !=' '){
-                info.cantNodos = info.cantNodos + c;
-            }
-        }
-
     }
 
 //    cout << info.arcosNum  << "\n"; 
