@@ -66,6 +66,8 @@ class Graphl : public Graph {
 			Edge e(v2);                         // constructor sin peso
 			vertex[v1]->append(e);
 			numEdge++;
+			// DEPURACIÓN:
+//    		cout << "Agregado arco: " << v1 << " → " << v2 << endl;
 		}
 
 		// Elimina la arista de v1 a v2
